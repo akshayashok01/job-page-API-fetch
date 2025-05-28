@@ -57,3 +57,23 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+
+
+API key = http://internal-project.nexware-global.com:9061/api/daijob/geohashing_get_job
+
+API payload = [
+
+category: ""
+city: ""
+employment_period_id: ""
+is_landing: 1
+keyword: ""
+latitude: 35.69258350869548
+longitude: 139.70822675530584
+prefecture: ""
+salary: ""
+salary_amount: ""
+work_period: 3
+
+]
