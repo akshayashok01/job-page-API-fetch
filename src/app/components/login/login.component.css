@@ -1,0 +1,25 @@
+.card{
+    border-radius: 15px;
+}
+.card-title{
+    font-weight: 600;
+}
+.btn-outline-primary,.btn-outline-danger{
+    width: 120px;
+}
+.btn img{
+    object-fit: contain;
+}
+.centered-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* gap: 8px; */
+}
+.logo-fox{
+    width:60px;
+    height: 60px;
+}
+.text-size{
+    font-size: 13px;
+}

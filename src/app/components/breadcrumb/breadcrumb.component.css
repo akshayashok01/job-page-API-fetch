@@ -1,0 +1,33 @@
+.bg-dark-teal {
+    background-color: #033f47;
+  }
+  
+  .shape {
+    opacity: 0.08;
+    background-repeat: no-repeat;
+    background-size: contain;
+    pointer-events: none;
+  }
+  
+  .shape-1 {
+    background-image: url('/assets/images/white-dot-sq.jpg'); 
+    top: 20%;
+    left: 60%;
+    width: 100px;
+    height: 100px;
+  }
+  
+
+  
+  .shape-2 {
+    background-image: url('/assets/images/tri-img.png'); 
+    top:0;
+    right: 5%;
+    width: 120px;
+    height: 120px;
+  }
+  
+  /* font size  */
+  .font-siz {
+    font-weight: 500;
+  }

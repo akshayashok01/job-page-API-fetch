@@ -1,0 +1,112 @@
+<div class="col mb-4">
+  <div class="border rounded p-3 bg-clr shadow-sm">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h5 class="mb-0 fw-bold">Search Filter</h5>
+      <a href="#" class="text-muted small text-decoration-none">Clear All</a>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label fw-semibold">Search By Keyword</label>
+      <input type="text" class="form-control" placeholder="Search by keywords...">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label fw-semibold">Job Category</label>
+      <select class="form-select">
+        <option>Choose category</option>
+        <option>Developer</option>
+        <option>Designer</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label fw-semibold">Radius in Miles</label>
+      <input type="range" class="form-range" min="0" max="1000" value="200">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label fw-semibold">Experience Level</label><br>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" checked>
+        <label class="form-check-label">Beginner (54)</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox">
+        <label class="form-check-label">1+ Year (32)</label>
+      </div>
+      <!-- Add more levels if needed -->
+    </div>
+
+    <!-- Job Type -->
+    <div class="mb-3">
+      <label class="form-label fw-semibold">Job Type</label><br>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="jobType">
+        <label class="form-check-label">Full time</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="jobType">
+        <label class="form-check-label">Part Time</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="jobType" checked>
+        <label class="form-check-label">Contract Base</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="jobType">
+        <label class="form-check-label">Internship</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="jobType">
+        <label class="form-check-label">Regular</label>
+      </div>
+    </div>
+
+    <!-- Job Level -->
+    <div class="mb-3">
+      <label class="form-label fw-semibold">Job Level</label><br>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" checked>
+        <label class="form-check-label">Team Leader</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox">
+        <label class="form-check-label">Manager</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox">
+        <label class="form-check-label">Junior</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox">
+        <label class="form-check-label">Senior</label>
+      </div>
+    </div>
+
+    <!-- Posted Date -->
+    <div class="mb-3">
+      <label class="form-label fw-semibold">Posted Date</label><br>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" checked>
+        <label class="form-check-label">Last Hour</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox">
+        <label class="form-check-label">Last 24 hour</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox">
+        <label class="form-check-label">Last Week</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox">
+        <label class="form-check-label">Last 30 Days</label>
+      </div>
+    </div>
+
+    <!-- Search Button -->
+    <div class="d-grid">
+      <button class="btn btn-success" type="button">Search job</button>
+    </div>
+  </div>
+</div>

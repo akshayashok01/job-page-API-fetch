@@ -1,0 +1,92 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom py-3 sticky-lg-top">
+  <div class="container-fluid ">
+    <!-- Brand / Logo -->
+    <a class="navbar-brand fw-bold text-success" routerLink="/home">WinkedIn</a>
+
+    <!-- Toggler/collapsing button -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapsible Content -->
+    <div class="collapse navbar-collapse ms-lg-5" id="navbarSupportedContent">
+      <!-- Left side: Main navigation -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-lg-center gap-lg-1 ">
+        <li class="nav-item">
+          <a class="nav-link active text-success fw-bold border-bottom border-success text-size"
+             routerLink="/home"
+             routerLinkActive="active">Home</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-size"
+             id="candidateDropdown"
+             role="button"
+             data-bs-toggle="dropdown"
+             aria-expanded="false"
+             routerLink="/candidates"
+             routerLinkActive="active">
+            For Candidate
+          </a>
+          <ul class="dropdown-menu text-size" aria-labelledby="candidateDropdown">
+            <li><a class="dropdown-item" href="#">Action 1</a></li>
+            <li><a class="dropdown-item" href="#">Action 2</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-size"
+             id="employerDropdown"
+             role="button"
+             data-bs-toggle="dropdown"
+             aria-expanded="false"
+             routerLink="/employer"
+             routerLinkActive="active">
+            For Employer
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="employerDropdown">
+            <li><a class="dropdown-item" href="#">Action 1</a></li>
+            <li><a class="dropdown-item" href="#">Action 2</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown text-size">
+          <a class="nav-link dropdown-toggle"
+             id="pagesDropdown"
+             role="button"
+             data-bs-toggle="dropdown"
+             aria-expanded="false"
+             routerLink="/pages"
+             routerLinkActive="active">
+            Pages
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="pagesDropdown">
+            <li><a class="dropdown-item" href="#">Page 1</a></li>
+            <li><a class="dropdown-item" href="#">Page 2</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item text-size">
+          <a class="nav-link" routerLink="/help" routerLinkActive="active">Help</a>
+        </li>
+      </ul>
+
+      <!-- Right side: Sign In and Upload Resume -->
+      <div class="d-flex align-items-center mt-3 mt-lg-0">
+        <a class="nav-link me-2 d-flex align-items-center text-size" href="#">
+          <i class="bi bi-box-arrow-in-right me-1" routerLink="/login"></i> Sign In
+        </a>
+        <button class="btn btn-success fw-bold px-4" type="button">
+          <i class="bi bi-cloud-arrow-up me-1 "></i> <span class="text-size">Upload Resume</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>

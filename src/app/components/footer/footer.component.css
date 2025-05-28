@@ -1,0 +1,31 @@
+.footer {
+    background-color: #f8f9fa;
+    color: #4a4a4a;
+  }
+  
+  .footer ul li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .stats > div {
+    min-width: 80px;
+    text-align: center;
+  }
+  
+  .app-btn {
+    background-color: #f2f2f2;
+    transition: 0.3s;
+  }
+  
+  .app-btn:hover {
+    background-color: #e0e0e0;
+    cursor: pointer;
+  }
+  .bg-clr{
+    background-color: rgb(225, 243, 234);
+  }
+  .green-slr{
+    color: #198754;
+    font-size: 35px;
+    font-weight: 700;
+  }

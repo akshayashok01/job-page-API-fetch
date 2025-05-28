@@ -1,0 +1,42 @@
+<div class="container py-4">
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let user of paginatedUsers">
+      <div class="card h-100 text-center shadow-sm">
+        <img [src]="user.image" class="card-img-top rounded-circle mx-auto mt-3" style="width: 100px; height: 100px; object-fit: cover;">
+        <div class="card-body">
+          <h5 class="card-title">{{ user.name }}</h5>
+          <p class="card-text">{{ user.designation }}</p>
+          <p class="text-warning">★ {{ user.rating }}</p>
+          <p>
+            <img src="\assets\icons\wallet.png" alt="Salary Icon" style="width: 20px; height: 20px; margin-right: 5px;">
+            {{ user.salary }}/H
+          </p>
+          <p>
+            <img src="\assets\icons\profit.png" alt="Experience Icon" style="width: 20px; height: 20px; margin-right: 5px;">
+            {{ user.experience }} Years exp.
+          </p>
+          
+          <div class="d-flex justify-content-center gap-2 mt-3">
+            <button class="btn btn-outline-primary">Message</button>
+            <button class="btn btn-success">View Detail</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  <nav>
+    <ul class="pagination justify-content-center">
+      <li class="page-item" [class.disabled]="currentPage === 1">
+        <a class="page-link" (click)="changePage(currentPage - 1)">&laquo;</a>
+      </li>
+      <li class="page-item" *ngFor="let page of totalPages()" [class.active]="page === currentPage">
+        <a class="page-link" (click)="changePage(page)">{{ page }}</a>
+      </li>
+      <li class="page-item" [class.disabled]="currentPage === totalPages().length">
+        <a class="page-link" (click)="changePage(currentPage + 1)">&raquo;</a>
+      </li>
+    </ul>
+  </nav>
+</div>

@@ -1,0 +1,28 @@
+.card-img-top {
+    border: 3px solid #198754;
+  }
+  .card-title {
+    font-weight: bold;
+  }
+  .card-text {
+    color: #666;
+  }
+  .user-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 4px solid #fff;
+    box-shadow: 0 0 0 3px #eee;
+  }
+
+  .pagination .page-link {
+    color: #198754;
+    border: 1px solid #dee2e6;
+  }
+  
+  .pagination .page-item.active .page-link {
+    background-color: #198754;
+    border-color: #198754;
+    color: white;
+  }
+  
