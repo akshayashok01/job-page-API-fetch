@@ -33,7 +33,7 @@ export class PagesComponent implements OnInit {
           latitude: job.latitude
         }));
       
-      // Limit to 108 jobs as requested
+      
       if (this.allJobs.length > 108) {
         this.allJobs = this.allJobs.slice(0, 108);
       }
