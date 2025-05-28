@@ -1,16 +1,25 @@
-<!-- job-cards.component.html -->
 <div class="container mt-3">
   <div class="row">
     <div class="col-lg-4 col-md-6 mb-4" *ngFor="let job of displayedJobs">
-      <div class="card">
+      <div class="card h-100">
         <div class="card-body">
-          <h5 class="card-title">{{ job.job_title || 'Job' }}</h5>
+          <h5 class="card-title">{{ job.job_title || 'Job Title Not Available' }}</h5>
           <ul class="list-group list-group-flush">
-            <ng-container *ngFor="let key of getNonNullKeys(job)">
-                <li *ngIf="key !== 'job_title'" class="list-group-item">
-                    <strong>{{ key }}:</strong> {{ job[key] }}
-                </li>
-            </ng-container>
+            <li class="list-group-item" *ngIf="job.company_name">
+              <strong>Company:</strong> {{ job.company_name }}
+            </li>
+            <li class="list-group-item" *ngIf="job.company_address">
+              <strong>Address:</strong> {{ job.company_address }}
+            </li>
+            <li class="list-group-item" *ngIf="job.category">
+              <strong>Category:</strong> {{ job.category }}
+            </li>
+            <li class="list-group-item" *ngIf="job.latitude && job.longitude">
+              <strong>Location:</strong> {{ job.latitude | number:'1.4-4' }}, {{ job.longitude | number:'1.4-4' }}
+            </li>
+            <li class="list-group-item" *ngIf="job.job_info_id">
+              <strong>Job ID:</strong> {{ job.job_info_id }}
+            </li>
           </ul>
         </div>
       </div>
@@ -26,9 +35,36 @@
       <li class="page-item" [class.disabled]="currentPage === 1">
         <a class="page-link" (click)="prevPage()">Previous</a>
       </li>
-      <li class="page-item" *ngFor="let page of pageNumbers()" [class.active]="page === currentPage">
-        <a class="page-link" (click)="goToPage(page)">{{ page }}</a>
+      
+      <!-- First page and possibly ellipsis -->
+      <li class="page-item" [class.active]="1 === currentPage">
+        <a class="page-link" (click)="goToPage(1)">1</a>
       </li>
+      
+      <ng-container *ngIf="currentPage > 4">
+        <li class="page-item disabled">
+          <span class="page-link">...</span>
+        </li>
+      </ng-container>
+      
+      <!-- Middle pages -->
+      <ng-container *ngFor="let page of getPaginationPages()">
+        <li class="page-item" [class.active]="page === currentPage">
+          <a class="page-link" (click)="goToPage(page)">{{ page }}</a>
+        </li>
+      </ng-container>
+      
+      <!-- Last pages and possibly ellipsis -->
+      <ng-container *ngIf="currentPage < totalPages() - 3">
+        <li class="page-item disabled">
+          <span class="page-link">...</span>
+        </li>
+      </ng-container>
+      
+      <li class="page-item" *ngIf="totalPages() > 1" [class.active]="totalPages() === currentPage">
+        <a class="page-link" (click)="goToPage(totalPages())">{{ totalPages() }}</a>
+      </li>
+      
       <li class="page-item" [class.disabled]="currentPage === totalPages()">
         <a class="page-link" (click)="nextPage()">Next</a>
       </li>

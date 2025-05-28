@@ -12,13 +12,31 @@ export class PagesComponent implements OnInit {
   allJobs: any[] = [];
   displayedJobs: any[] = [];
   currentPage = 1;
-  pageSize = 12;
+  pageSize = 9; // Changed to 9 cards per page
+  maxVisiblePages = 3; // Number of pages to show around current page
 
   constructor(private jobService: JobService) {}
 
   ngOnInit() {
     this.jobService.fetchJobs().subscribe(jobs => {
-      this.allJobs = jobs;
+      // Filter and map only the required fields
+      this.allJobs = jobs
+        .filter(job => job.job_title && job.job_info_id) // Ensure required fields exist
+        .map(job => ({
+          job_title: job.job_title,
+          job_info_id: job.job_info_id,
+          company_name: job.company_name,
+          company_address: job.company_address,
+          category: job.category,
+          longitude: job.longitude,
+          latitude: job.latitude
+        }));
+      
+      // Limit to 108 jobs as requested
+      if (this.allJobs.length > 108) {
+        this.allJobs = this.allJobs.slice(0, 108);
+      }
+      
       this.updateDisplayedJobs();
     });
   }
@@ -26,10 +44,6 @@ export class PagesComponent implements OnInit {
   updateDisplayedJobs() {
     const start = (this.currentPage - 1) * this.pageSize;
     this.displayedJobs = this.allJobs.slice(start, start + this.pageSize);
-  }
-
-  getNonNullKeys(job: any) {
-    return Object.keys(job).filter(key => job[key] !== null);
   }
 
   totalPages(): number {
@@ -40,6 +54,7 @@ export class PagesComponent implements OnInit {
     if (page >= 1 && page <= this.totalPages()) {
       this.currentPage = page;
       this.updateDisplayedJobs();
+      window.scrollTo(0, 0); // Scroll to top when changing pages
     }
   }
 
@@ -59,7 +74,21 @@ export class PagesComponent implements OnInit {
     this.goToPage(this.totalPages());
   }
 
-  pageNumbers(): number[] {
-    return Array.from({ length: this.totalPages() }, (_, i) => i + 1);
+  getPaginationPages(): number[] {
+    const total = this.totalPages();
+    const current = this.currentPage;
+    const pages: number[] = [];
+    
+    // Always show current page and some surrounding pages
+    const start = Math.max(2, current - Math.floor(this.maxVisiblePages / 2));
+    const end = Math.min(total - 1, start + this.maxVisiblePages - 1);
+    
+    for (let i = start; i <= end; i++) {
+      if (i > 1 && i < total) {
+        pages.push(i);
+      }
+    }
+    
+    return pages;
   }
 }
