@@ -16,6 +16,7 @@ export class PagesComponent implements OnInit {
   pageSize = 9; // Changed to 9 cards per page
   maxVisiblePages = 3; // Number of pages to show around current page
 
+
   constructor(private jobService: JobService) {}
 
   ngOnInit() {
@@ -55,7 +56,7 @@ export class PagesComponent implements OnInit {
     if (page >= 1 && page <= this.totalPages()) {
       this.currentPage = page;
       this.updateDisplayedJobs();
-      window.scrollTo(0, 0); // Scroll to top when changing pages
+      // window.scrollTo(0, 0); 
     }
   }
 
@@ -80,7 +81,7 @@ export class PagesComponent implements OnInit {
     const current = this.currentPage;
     const pages: number[] = [];
     
-    // Always show current page and some surrounding pages
+  
     const start = Math.max(2, current - Math.floor(this.maxVisiblePages / 2));
     const end = Math.min(total - 1, start + this.maxVisiblePages - 1);
     

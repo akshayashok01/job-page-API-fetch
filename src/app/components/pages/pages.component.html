@@ -1,4 +1,4 @@
-<app-breadcrumb></app-breadcrumb>
+<app-breadcrumb [listName]="'Daijob'" [candidateNumber]="'02'"></app-breadcrumb>
 <div class="container mt-3">
   <div class="row">
     <div class="col-lg-4 col-md-6 mb-4" *ngFor="let job of displayedJobs">
@@ -18,9 +18,9 @@
             <li class="list-group-item" *ngIf="job.latitude && job.longitude">
               <strong>Location:</strong> {{ job.latitude | number:'1.4-4' }}, {{ job.longitude | number:'1.4-4' }}
             </li>
-            <li class="list-group-item" *ngIf="job.job_info_id">
+            <!-- <li class="list-group-item" *ngIf="job.job_info_id">
               <strong>Job ID:</strong> {{ job.job_info_id }}
-            </li>
+            </li> -->
           </ul>
         </div>
       </div>
@@ -29,12 +29,12 @@
 
   <!-- Pagination Controls -->
   <nav class="d-flex justify-content-center mt-4">
-    <ul class="pagination flex-wrap">
+    <ul class="pagination pagination-sm flex-wrap">
       <li class="page-item" [class.disabled]="currentPage === 1">
-        <a class="page-link" (click)="firstPage()">First</a>
+        <a class="page-link" (click)="firstPage()"><<</a>
       </li>
       <li class="page-item" [class.disabled]="currentPage === 1">
-        <a class="page-link" (click)="prevPage()">Previous</a>
+        <a class="page-link" (click)="prevPage()"><</a>
       </li>
       
       <!-- First page and possibly ellipsis -->
@@ -67,10 +67,10 @@
       </li>
       
       <li class="page-item" [class.disabled]="currentPage === totalPages()">
-        <a class="page-link" (click)="nextPage()">Next</a>
+        <a class="page-link" (click)="nextPage()">></a>
       </li>
       <li class="page-item" [class.disabled]="currentPage === totalPages()">
-        <a class="page-link" (click)="lastPage()">Last</a>
+        <a class="page-link" (click)="lastPage()"> >> </a>
       </li>
     </ul>
   </nav>
