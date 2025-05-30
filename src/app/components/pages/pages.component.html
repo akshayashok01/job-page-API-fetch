@@ -34,9 +34,20 @@
               <img src="/assets/icons/map.png" alt="Dribbble" width="21" height="21"> Location
               </a>
             </li>
+
+           <li class="list-group-item" *ngIf="job.latitude && job.longitude">
+  <strong>Coordinates:</strong> {{ job.latitude | number:'1.4-4' }}, {{ job.longitude | number:'1.4-4' }}<br />
+  <strong>Prefecture:</strong> {{ getJobPrefecture(job) }}<br />
+  <strong>City:</strong> {{ getJobCity(job) }}
+</li>
             <!-- <li class="list-group-item" *ngIf="job.job_info_id">
               <strong>Job ID:</strong> {{ job.job_info_id }}
             </li> -->
+            <div class="row gap-2 gap-lg-3 align-items-center justify-content-center mt-3">
+                 <button class="btn btn-primary col-lg-4 col-5">Message</button>
+                 <button class="btn btn-success col-lg-4 col-5">View Details</button>
+            </div>
+           
           </ul>
         </div>
       </div>
@@ -91,3 +102,11 @@
     </ul>
   </nav>
 </div>
+
+  <section >
+    <app-join></app-join>
+  </section>
+
+  <footer>
+    <app-footer></app-footer>
+  </footer>
