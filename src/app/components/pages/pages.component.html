@@ -4,6 +4,14 @@
     <div class="col-lg-4 col-md-6 mb-4" *ngFor="let job of displayedJobs">
       <div class="card h-100">
         <div class="card-body">
+          <!-- image -->
+
+          <img 
+          src="/assets/images/1.jpg" 
+          class="card-img-top" 
+          alt="Job Image" 
+          style="height: 200px; object-fit: cover;"
+        />
           <h5 class="card-title">{{ job.job_title || 'Job Title Not Available' }}</h5>
           <ul class="list-group list-group-flush">
             <li class="list-group-item" *ngIf="job.company_name">
@@ -15,8 +23,16 @@
             <li class="list-group-item" *ngIf="job.category">
               <strong>Category:</strong> {{ job.category }}
             </li>
+            <!-- location -->
             <li class="list-group-item" *ngIf="job.latitude && job.longitude">
-              <strong>Location:</strong> {{ job.latitude | number:'1.4-4' }}, {{ job.longitude | number:'1.4-4' }}
+              
+              <a
+                [href]="'https://www.google.com/maps?q=' + job.latitude + ',' + job.longitude"
+                target="_blank"
+                class="text-decoration-none"
+              >
+              <img src="/assets/icons/map.png" alt="Dribbble" width="21" height="21"> Location
+              </a>
             </li>
             <!-- <li class="list-group-item" *ngIf="job.job_info_id">
               <strong>Job ID:</strong> {{ job.job_info_id }}
