@@ -35,8 +35,8 @@ export class PagesComponent implements OnInit {
           company_name: job.company_name,
           company_address: job.company_address,
           category: job.category,
-          latitude: job.latitude,
-          longitude: job.longitude
+          latitude: parseFloat(job.latitude),
+          longitude: parseFloat(job.longitude)
         }));
 
       this.updateDisplayedJobs();
@@ -58,7 +58,7 @@ export class PagesComponent implements OnInit {
   }
 
   async getLocationFromOpenCage(lat: number, lon: number): Promise<{ prefecture: string; city: string }> {
-    const apiKey = 'cfde4f02945849b4b4fd5303198d5bf4'; // 🔐 Replace with your actual OpenCage API key
+    const apiKey = 'cfde4f02945849b4b4fd5303198d5bf4'; // Replace with your actual OpenCage API key
     const url = `https://api.opencagedata.com/geocode/v1/json?q=${lat}+${lon}&key=${apiKey}&language=en`;
 
     try {
