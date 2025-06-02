@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { JobService } from '../../services/job.service';
+import { LocationService } from '../../services/location.service';
 import { BreadcrumbComponent } from '../breadcrumb/breadcrumb.component';
 import { JoinComponent } from '../join/join.component';
 import { FooterComponent } from '../footer/footer.component';
@@ -22,7 +23,11 @@ export class PagesComponent implements OnInit {
 
   jobLocations: { [key: string]: { prefecture: string; city: string } } = {};
 
-  constructor(private jobService: JobService, private http: HttpClient) {}
+  constructor(
+    private jobService: JobService,
+    private http: HttpClient,
+    private locationService: LocationService 
+  ) {}
 
   ngOnInit() {
     this.jobService.fetchJobs().subscribe(jobs => {
@@ -41,38 +46,19 @@ export class PagesComponent implements OnInit {
 
       this.updateDisplayedJobs();
 
-      // Reverse geocode locations with caching
       this.allJobs.forEach(job => {
         const key = `${job.latitude},${job.longitude}`;
         const cached = localStorage.getItem(`loc-${key}`);
         if (cached) {
           this.jobLocations[key] = JSON.parse(cached);
         } else {
-          this.getLocationFromOpenCage(job.latitude, job.longitude).then(location => {
+          this.locationService.getLocationFromGeoapify(job.latitude, job.longitude).then(location => {
             this.jobLocations[key] = location;
             localStorage.setItem(`loc-${key}`, JSON.stringify(location));
           });
         }
       });
     });
-  }
-
-  async getLocationFromOpenCage(lat: number, lon: number): Promise<{ prefecture: string; city: string }> {
-    const apiKey = 'cfde4f02945849b4b4fd5303198d5bf4'; // Replace with your actual OpenCage API key
-    const url = `https://api.opencagedata.com/geocode/v1/json?q=${lat}+${lon}&key=${apiKey}&language=en`;
-
-    try {
-      const response: any = await this.http.get(url).toPromise();
-      const components = response?.results[0]?.components;
-
-      return {
-        prefecture: components?.state || components?.province || 'Unknown Prefecture',
-        city: components?.city || components?.town || components?.village || components?.hamlet || 'Unknown City'
-      };
-    } catch (err) {
-      console.error('OpenCage API error:', err);
-      return { prefecture: 'Unknown', city: 'Unknown' };
-    }
   }
 
   getJobPrefecture(job: any): string {
